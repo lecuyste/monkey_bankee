@@ -102,8 +102,6 @@ public class MainFrameAddEmployee extends JFrame {
                             } catch (Exception ex) {
                                 ex.printStackTrace();
                             }
-
-
                         } else {
                             JlabelError.setText("Les mots de passe ne correspondent pas.");
                         }
@@ -112,5 +110,4 @@ public class MainFrameAddEmployee extends JFrame {
             }
         });
     }
-
 }

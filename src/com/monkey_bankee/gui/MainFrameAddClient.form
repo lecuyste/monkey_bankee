@@ -177,7 +177,7 @@
             </constraints>
             <properties>
               <labelFor value="55698"/>
-              <text value="Numero de Mobile"/>
+              <text value="Telephone"/>
             </properties>
           </component>
           <component id="b900e" class="javax.swing.JLabel">
@@ -314,7 +314,7 @@
               <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Regular income"/>
+              <text value="Argent moyen rentrant"/>
             </properties>
           </component>
           <component id="abe37" class="javax.swing.JLabel">
@@ -322,7 +322,7 @@
               <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Regular Spending"/>
+              <text value="Argent moyen sortant"/>
             </properties>
           </component>
           <component id="14aec" class="javax.swing.JLabel">
@@ -330,7 +330,7 @@
               <grid row="10" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Sub"/>
+              <text value="Suscription"/>
             </properties>
           </component>
           <component id="69959" class="javax.swing.JButton" binding="retourButton" default-binding="true">
