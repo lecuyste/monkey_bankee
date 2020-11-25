@@ -16,13 +16,15 @@ public class MainFrameLogin extends JFrame {
     private JTextField LoginTextField;
     private JPasswordField passwordField;
     private JButton connectButton;
+    private JButton exit;
 
 
     public MainFrameLogin() {
 
         add(JPanelLogin);
-        setTitle("MonkeyBankee");
-        setSize(700, 800);
+        setTitle("MonkeyBankee | Login");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         connectButton.addActionListener(new ActionListener() {
@@ -44,8 +46,8 @@ public class MainFrameLogin extends JFrame {
                         JOptionPane.showMessageDialog(JPanelLogin, " Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
 
                         dispose();
-                        MainFrameAddEmployee addEmployee = new MainFrameAddEmployee();
-                        addEmployee.setVisible(true);
+                        MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                        employeePanel.setVisible(true);
 
 
                     } else {
@@ -58,6 +60,14 @@ public class MainFrameLogin extends JFrame {
 
             }
 
+
+        });
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
         });
     }
 }

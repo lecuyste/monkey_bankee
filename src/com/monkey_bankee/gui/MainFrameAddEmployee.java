@@ -5,11 +5,10 @@ import com.monkey_bankee.dao.HashDAO;
 import com.monkey_bankee.model.Employee;
 
 import javax.swing.*;
-import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -22,19 +21,29 @@ public class MainFrameAddEmployee extends JFrame {
     private JTextField Mobile;
     private JButton Register;
     private JPanel JPanelAdd;
-    private JPanel JPanelLogo;
-    private JLabel Logo;
-    private JPanel JpanelForm;
     private JPasswordField passwordConfirm;
-    private JLabel PasswordLabel;
     private JLabel JlabelError;
+    private JButton retourButton;
 
 
     public MainFrameAddEmployee() {
         add(JPanelAdd);
-        setTitle("MonkeyBankee");
-        setSize(700, 800);
+        setTitle("MonkeyBankee | Ajouter Un Employee");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        //retourn
+        retourButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                employeePanel.setVisible(true);
+
+            }
+
+        });
 
         Register.addActionListener(new ActionListener() {
 

@@ -30,12 +30,27 @@ public class MainFrameAddClient extends JFrame {
     private JTextField regularIncome;
     private JTextField regularSpending;
     private JTextField sub;
+    private JButton retourButton;
 
     public MainFrameAddClient() {
         add(JPanelAddClient);
-        setTitle("MonkeyBankee - Ajouter un client");
-        setSize(700, 800);
+        setTitle("MonkeyBankee | Ajouter un client");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
+        //retourn
+        retourButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                employeePanel.setVisible(true);
+
+            }
+
+        });
 
         register.addActionListener(new ActionListener() {
 
@@ -92,8 +107,11 @@ public class MainFrameAddClient extends JFrame {
                         try {
 
                             FactoryDAO.getClientDAO().addClient(client);
-                            JOptionPane.showMessageDialog(JPanelAddClient, "Employé(e) ajouté(e)");
-                            setVisible(false);
+                            JOptionPane.showMessageDialog(JPanelAddClient, "Client(e) ajouté(e)");
+                            dispose();
+                            MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                            employeePanel.setVisible(true);
+
 
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();

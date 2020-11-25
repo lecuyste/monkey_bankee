@@ -10,30 +10,29 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeTable extends AbstractTableModel {
-    //TEST TABLEAU
+public class ClientTable extends AbstractTableModel {
 
-
-    private List<Employee> employees;
+    private List<Client> clients;
     private Statement statement;
     private ResultSet resultSet;
     private ResultSetMetaData metaData;
     private int numberOfRows;
     private String[] Titres = {
             "ID",
-            "Nom Employe",
-            "Prenom Employe",
-            "Ville Banque",
+            "Nom Client",
+            "Prenom Client",
+            "Date de naissance",
             "Adresse Mail",
             "N° Telephone",
-            " "
-
+            "Situation maritale",
+            "Adresse postal",
+            "Date Création"
     };
 
-    public EmployeeTable() {
-        employees = new ArrayList<Employee>();
+    public ClientTable() {
+        clients = new ArrayList<Client>();
         try {
-            employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
+            clients = FactoryDAO.getClientDAO().getAllClient();
         } catch (SQLException se) {
             se.printStackTrace();
         }
@@ -41,7 +40,7 @@ public class EmployeeTable extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return employees.size();
+        return clients.size();
     }
 
     @Override
@@ -59,34 +58,36 @@ public class EmployeeTable extends AbstractTableModel {
     public void setValueAt(Object value, int row, int col) {
         // TODO Auto-generated method stub
         if (col == 1) {
-            employees.get(row).setEmployee_nom((String) value);
+            clients.get(row).setName((String) value);
         } else if (col == 3) {
-            employees.get(row).setEmployee_ville((String) value);
+            clients.get(row).setBirthdate((String) value);
         }
-        fireTableCellUpdated(row, col);
     }
 
     @Override
     public Object getValueAt(int row, int col) {
-        Employee employee = employees.get(row);
+        Client client = clients.get(row);
         switch (col) {
             case 0:
-                return employees.get(row).getEmployee_id();
+                return clients.get(row).getId();
             case 1:
-                return employees.get(row).getEmployee_nom();
+                return clients.get(row).getName();
             case 2:
-                return employees.get(row).getEmployee_prenom();
+                return clients.get(row).getFirstname();
             case 3:
-                return employees.get(row).getEmployee_ville();
+                return clients.get(row).getBirthdate();
             case 4:
-                return employees.get(row).getLogin();
+                return clients.get(row).getEmail();
             case 5:
-                return employees.get(row).getEmployee_tel();
+                return clients.get(row).getTel();
             case 6:
-                return "Ici boutton" ;
+                return clients.get(row).getFamily_situation();
+            case 7:
+                return clients.get(row).getAddress_number() + " " + clients.get(row).getStreet_address() + " " + clients.get(row).getPostal_code() + " " + clients.get(row).getCity_address();
+            case 8:
+                return clients.get(row).getCreated_at();
             default:
                 return "";
         }
     }
 }
-
