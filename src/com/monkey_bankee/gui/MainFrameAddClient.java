@@ -81,7 +81,7 @@ public class MainFrameAddClient extends JFrame {
 
 
 
-                if (name.isEmpty() || firstname.isEmpty() || birthday.isEmpty() || email.isEmpty() || mobile.isEmpty() || family.isEmpty() || account.isEmpty() || regin.isEmpty() || regsp.isEmpty() || subs.isEmpty() || numberAdress.isEmpty() || adresss.isEmpty() || adressad.isEmpty() || nzip.isEmpty() || cty.isEmpty() ){
+                if (name.isEmpty() || firstname.isEmpty() || birthday.isEmpty() || email.isEmpty() || mobile.isEmpty() || family.isEmpty() || account.isEmpty() || regin.isEmpty() || regsp.isEmpty() || subs.isEmpty() || numberAdress.isEmpty() || adresss.isEmpty()  || nzip.isEmpty() || cty.isEmpty() ){
                     JLabelError.setText("Veuillez remplir tous les champs");
                     setVisible(true);
 
@@ -105,22 +105,17 @@ public class MainFrameAddClient extends JFrame {
 
 
                         try {
-
                             FactoryDAO.getClientDAO().addClient(client);
                             JOptionPane.showMessageDialog(JPanelAddClient, "Client(e) ajouté(e)");
+
                             dispose();
                             MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
                             employeePanel.setVisible(true);
-
-
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
-
-
-
                     }
                 }
 

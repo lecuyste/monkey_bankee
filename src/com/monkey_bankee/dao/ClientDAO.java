@@ -9,6 +9,8 @@ public interface ClientDAO {
 
     public Client getByIdClient(int id);
 
+    public Client getLastClient();
+
     public boolean deleteClient(int id);
 
     public ArrayList<Client> getAllClient();

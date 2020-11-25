@@ -91,6 +91,25 @@ public class ClientDAOImpl extends DBUtil implements ClientDAO {
     }
 
     @Override
+    public Client getLastClient() {
+        Client client = new Client();
+        try{
+            String query = "SELECT * FROM client ORDER BY id DESC LIMIT 1";
+            PreparedStatement st = getConnection().prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                client = transformSqlToClient(rs);
+            }
+        } catch (SQLException se){
+            se.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return client;
+    }
+
+    @Override
     public boolean deleteClient(int id) {
         try {
             String query = "DELETE FROM client  WHERE id = ?";

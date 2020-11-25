@@ -87,8 +87,9 @@ public class MainFrameAddEmployee extends JFrame {
 
                             FactoryDAO.getEmployeeDAO().addEmployee(employee);
                             JOptionPane.showMessageDialog(JPanelAdd, "Employé(e) ajouté(e)");
-                            setVisible(false);
-
+                            dispose();
+                            MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                            employeePanel.setVisible(true);
                         } catch (SQLException throwables) {
                             throwables.printStackTrace();
                         } catch (Exception ex) {
