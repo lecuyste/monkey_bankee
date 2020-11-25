@@ -50,8 +50,6 @@ public class ClientDAOImpl extends DBUtil implements ClientDAO {
         }
     }
 
-
-
     @Override
     public ArrayList<Client> getAllClient() {
         ArrayList<Client> clients = new ArrayList<>();
@@ -148,5 +146,4 @@ public class ClientDAOImpl extends DBUtil implements ClientDAO {
 
         return client;
     }
-
 }

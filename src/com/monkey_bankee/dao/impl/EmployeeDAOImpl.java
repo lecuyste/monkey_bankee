@@ -113,6 +113,11 @@ public class EmployeeDAOImpl extends DBUtil implements EmployeeDAO {
         return employee;
     }
 
+    public int saveId (int id){
+        int idSave = id;
+        return idSave;
+    }
+
 
     @Override
     public boolean deleteEmployee(int id) {
