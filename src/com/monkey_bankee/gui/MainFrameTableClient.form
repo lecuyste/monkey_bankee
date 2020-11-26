@@ -19,7 +19,9 @@
         <children>
           <scrollpane id="ee1ad" binding="scrollpane">
             <constraints border-constraint="Center"/>
-            <properties/>
+            <properties>
+              <background color="-10898546"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="bdd2f" class="javax.swing.JTable" binding="table">

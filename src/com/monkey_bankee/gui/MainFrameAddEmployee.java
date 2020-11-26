@@ -26,6 +26,7 @@ public class MainFrameAddEmployee extends JFrame {
     private JPasswordField passwordConfirm;
     private JLabel JlabelError;
     private JButton retourButton;
+    private JButton retourButton2;
 
 
     public MainFrameAddEmployee() {
@@ -107,6 +108,12 @@ public class MainFrameAddEmployee extends JFrame {
                         }
                     }
                 }
+            }
+        });
+        retourButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }

@@ -58,7 +58,7 @@ public class MainFrameTableEmployee extends JFrame {
 
 
     private void initComponent() throws SQLException {
-        Color vert = new Color(50,181,55);
+        Color vert = new Color(89,179,142);
         //this.panel = new JPanel(new BorderLayout());
         employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
         model = new EmployeeTable();
