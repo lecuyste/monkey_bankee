@@ -1,13 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.monkey_bankee.gui.MainFrameTableClient">
-  <grid id="27dc6" row-count="1" column-count="1" layout-manager="GridLayoutManager">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="15" left="30" bottom="15" right="30"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
-      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+      <xy x="20" y="20" width="672" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-14655195"/>
+    </properties>
     <border type="none"/>
-    <children/>
+    <children>
+      <grid id="789eb" binding="pane" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <scrollpane id="ee1ad" binding="scrollpane">
+            <constraints border-constraint="Center"/>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="bdd2f" class="javax.swing.JTable" binding="table">
+                <constraints/>
+                <properties>
+                  <focusable value="false"/>
+                  <intercellSpacing width="0" height="0"/>
+                  <preferredScrollableViewportSize width="600" height="200"/>
+                  <rowHeight value="25"/>
+                  <selectionBackground color="-13722829"/>
+                  <selectionForeground color="-721409"/>
+                  <showVerticalLines value="false"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <grid id="fde85" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14655195"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="63167" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <icon value="assets/img/monkeybankee_login.png"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="e7e97" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-721409"/>
+              <font size="20" style="1"/>
+              <foreground color="-721409"/>
+              <text value="Clients De la Banque"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="99a28" class="javax.swing.JButton" binding="ajouterUnClientButton" default-binding="true">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Ajouter un client"/>
+        </properties>
+      </component>
+      <component id="444d3" class="javax.swing.JButton" binding="retourAccueilButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Retour Accueil"/>
+        </properties>
+      </component>
+    </children>
   </grid>
 </form>

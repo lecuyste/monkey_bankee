@@ -15,10 +15,14 @@ import java.util.ArrayList;
 public class MainFrameTableClient extends JFrame {
 
     private ArrayList<Client> clients;
-    private JPanel panel;
+    private JPanel rootPanel;
     private JTable table;
     private ClientTable model;
     private JButton returnbutton;
+    private JButton retourAccueilButton;
+    private JScrollPane scrollpane;
+    private JPanel pane;
+    private JButton ajouterUnClientButton;
 
 
     public MainFrameTableClient() {
@@ -36,15 +40,33 @@ public class MainFrameTableClient extends JFrame {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        retourAccueilButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                employeePanel.setVisible(true);
+            }
+        });
+        ajouterUnClientButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MainFrameAddClient addClient = new MainFrameAddClient();
+                addClient.setVisible(true);
+            }
+        });
     }
+
 
 
     private void initComponent() throws SQLException {
         Color vert = new Color(50,181,55);
-        this.panel = new JPanel(new BorderLayout());
+//        this.pane = new JPanel(new BorderLayout());
         clients = FactoryDAO.getClientDAO().getAllClient();
         model = new ClientTable();
-        table = new JTable(model);
+        table.setModel(model);
+//        table = new JTable(model);
         table.setOpaque(false);
         table.getTableHeader().setBackground(vert);
         table.getTableHeader().setForeground(new Color(0,0,0));
@@ -52,24 +74,19 @@ public class MainFrameTableClient extends JFrame {
         table.setForeground(Color.WHITE);
         table.setRowHeight(25);
         JScrollPane scrollPane = new JScrollPane(table);
-        panel.add(scrollPane, BorderLayout.NORTH);
-        this.returnbutton = new JButton("Retour");
-        panel.add(this.returnbutton, BorderLayout.SOUTH);
-        returnbutton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                dispose();
-                MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
-                employeePanel.setVisible(true);
-            }
-        });
+        pane.add(scrollPane, BorderLayout.CENTER);
 
-        getContentPane().add(panel);
+
+        getContentPane().add(rootPanel);
     }
 
-    public MainFrameTableClient getThis() {
+    public JPanel getRootPanel() {
+        return rootPanel;
+    }
+
+    /*public MainFrameTableClient getThis() {
         return this;
-    }
+    }*/
 
 
 }
