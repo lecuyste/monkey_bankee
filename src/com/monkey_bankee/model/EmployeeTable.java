@@ -3,7 +3,10 @@ package com.monkey_bankee.model;
 import com.monkey_bankee.dao.FactoryDAO;
 
 import javax.swing.table.AbstractTableModel;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +15,10 @@ public class EmployeeTable extends AbstractTableModel {
 
 
     private List<Employee> employees;
+    private Statement statement;
+    private ResultSet resultSet;
+    private ResultSetMetaData metaData;
+    private int numberOfRows;
     private String[] Titres = {
             "ID",
             "Nom Employe",

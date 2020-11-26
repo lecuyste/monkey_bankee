@@ -114,7 +114,7 @@
               <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Button"/>
+              <text value="Ajouter"/>
             </properties>
           </component>
           <component id="2546b" class="javax.swing.JLabel">
@@ -146,7 +146,7 @@
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Login"/>
+              <text value="Adresse mail"/>
             </properties>
           </component>
           <component id="d1f94" class="javax.swing.JLabel">
@@ -170,7 +170,7 @@
               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Tél.:"/>
+              <text value="Telephone"/>
             </properties>
           </component>
           <vspacer id="5bbab">

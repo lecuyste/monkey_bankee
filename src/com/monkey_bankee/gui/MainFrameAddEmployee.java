@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class MainFrameAddEmployee extends JFrame {
@@ -67,41 +69,45 @@ public class MainFrameAddEmployee extends JFrame {
                 String passwordEncoded = hash.hashPassword(password);
                 String passwordVerifyEncoded = hash.hashPassword(password_verify);
 
+                Pattern regexPhone = Pattern.compile("^\\d{10}$");
+                Matcher matcherPhone = regexPhone.matcher(mobile);
+
 
                 if (name.isEmpty() || firstname.isEmpty() || city.isEmpty() || login.isEmpty() || password.isEmpty() || password_verify.isEmpty() || mobile.isEmpty()) {
                     JlabelError.setText("Veuillez remplir tous les champs");
                     setVisible(true);
-
                 } else {
-                    employee.setEmployee_nom(name);
-                    employee.setEmployee_prenom(firstname);
-                    employee.setEmployee_ville(city);
-                    employee.setLogin(login);
-                    employee.setPassword(password);
-                    employee.setEmployee_tel(mobile);
-                    employee.setCreated_at(new java.sql.Timestamp(new java.util.Date().getTime()));
-
-                    if (passwordEncoded.equals(passwordVerifyEncoded)) {
-
-                        try {
-
-                            FactoryDAO.getEmployeeDAO().addEmployee(employee);
-                            JOptionPane.showMessageDialog(JPanelAdd, "Employé(e) ajouté(e)");
-                            setVisible(false);
-
-                        } catch (SQLException throwables) {
-                            throwables.printStackTrace();
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-
-
+                    if (!matcherPhone.matches()) {
+                        JlabelError.setText("Votre numéro ne contient pas 10 chiffres");
                     } else {
-                        JlabelError.setText("Les mots de passe ne correspondent pas.");
+                        employee.setEmployee_nom(name);
+                        employee.setEmployee_prenom(firstname);
+                        employee.setEmployee_ville(city);
+                        employee.setLogin(login);
+                        employee.setPassword(password);
+                        employee.setEmployee_tel(mobile);
+                        employee.setCreated_at(new java.sql.Timestamp(new java.util.Date().getTime()));
+
+                        if (passwordEncoded.equals(passwordVerifyEncoded)) {
+
+                            try {
+
+                                FactoryDAO.getEmployeeDAO().addEmployee(employee);
+                                JOptionPane.showMessageDialog(JPanelAdd, "Employé(e) ajouté(e)");
+                                dispose();
+                                MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                                employeePanel.setVisible(true);
+                            } catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                        } else {
+                            JlabelError.setText("Les mots de passe ne correspondent pas.");
+                        }
                     }
                 }
             }
         });
     }
-
 }

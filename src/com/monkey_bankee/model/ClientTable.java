@@ -26,7 +26,7 @@ public class ClientTable extends AbstractTableModel {
             "N° Telephone",
             "Situation maritale",
             "Adresse postal",
-            "Date Création"
+            " "
     };
 
     public ClientTable() {
@@ -85,7 +85,7 @@ public class ClientTable extends AbstractTableModel {
             case 7:
                 return clients.get(row).getAddress_number() + " " + clients.get(row).getStreet_address() + " " + clients.get(row).getPostal_code() + " " + clients.get(row).getCity_address();
             case 8:
-                return clients.get(row).getCreated_at();
+                return "Ici bouton";
             default:
                 return "";
         }

@@ -50,8 +50,6 @@ public class ClientDAOImpl extends DBUtil implements ClientDAO {
         }
     }
 
-
-
     @Override
     public ArrayList<Client> getAllClient() {
         ArrayList<Client> clients = new ArrayList<>();
@@ -77,6 +75,25 @@ public class ClientDAOImpl extends DBUtil implements ClientDAO {
             String query = "SELECT * FROM client WHERE id = ?";
             PreparedStatement st = getConnection().prepareStatement(query);
             st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                client = transformSqlToClient(rs);
+            }
+        } catch (SQLException se){
+            se.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return client;
+    }
+
+    @Override
+    public Client getLastClient() {
+        Client client = new Client();
+        try{
+            String query = "SELECT * FROM client ORDER BY id DESC LIMIT 1";
+            PreparedStatement st = getConnection().prepareStatement(query);
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
@@ -129,5 +146,4 @@ public class ClientDAOImpl extends DBUtil implements ClientDAO {
 
         return client;
     }
-
 }
