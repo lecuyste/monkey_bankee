@@ -4,7 +4,6 @@ package com.monkey_bankee.gui;
 import com.monkey_bankee.dao.FactoryDAO;
 import com.monkey_bankee.model.Client;
 import com.monkey_bankee.model.ClientTable;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

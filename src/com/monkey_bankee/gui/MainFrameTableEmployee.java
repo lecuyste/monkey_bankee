@@ -19,6 +19,11 @@ public class MainFrameTableEmployee extends JFrame {
     private JTable table;
     private EmployeeTable model;
     private JButton returnbutton;
+    private JPanel rootPanel;
+    private JPanel pane;
+    private JButton retourAccueilButton;
+    private JButton ajouterEmployeButton;
+    private javax.swing.JScrollPane JScrollPane;
 
 
     public MainFrameTableEmployee() {
@@ -33,34 +38,51 @@ public class MainFrameTableEmployee extends JFrame {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
-
-
-    private void initComponent() throws SQLException {
-        this.panel = new JPanel(new BorderLayout());
-        employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
-        model = new EmployeeTable();
-        table = new JTable(model);
-        table.setOpaque(false);
-        JScrollPane scrollPane = new JScrollPane(table);
-        panel.add(scrollPane, BorderLayout.NORTH);
-        this.returnbutton = new JButton("Retour");
-        panel.add(this.returnbutton, BorderLayout.SOUTH);
-        returnbutton.addActionListener(new ActionListener(){
+        retourAccueilButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 dispose();
                 MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
                 employeePanel.setVisible(true);
             }
         });
-
-        getContentPane().add(panel);
+        ajouterEmployeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                MainFrameAddEmployee addEmployee = new MainFrameAddEmployee();
+                addEmployee.setVisible(true);
+            }
+        });
     }
 
-    public MainFrameTableEmployee getThis() {
+
+    private void initComponent() throws SQLException {
+        Color vert = new Color(50,181,55);
+        //this.panel = new JPanel(new BorderLayout());
+        employees = FactoryDAO.getEmployeeDAO().getAllEmployee();
+        model = new EmployeeTable();
+        table.setModel(model);
+        table.setOpaque(false);
+        table.getTableHeader().setBackground(vert);
+        table.getTableHeader().setForeground(new Color(0,0,0));
+        table.setBackground(vert);
+        table.setForeground(Color.WHITE);
+        table.setRowHeight(25);
+        JScrollPane scrollPane = new JScrollPane(table);
+        pane.add(scrollPane, BorderLayout.CENTER);
+
+
+        getContentPane().add(rootPanel);
+    }
+
+    public JPanel getRootPanel() {
+        return rootPanel;
+    }
+
+    /*public MainFrameTableEmployee getThis() {
         return this;
-    }
+    }*/
 
 
 }
