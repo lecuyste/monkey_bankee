@@ -5,10 +5,9 @@ import com.monkey_bankee.dao.HashDAO;
 import com.monkey_bankee.model.Employee;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MainFrameLogin extends JFrame {
@@ -16,14 +15,19 @@ public class MainFrameLogin extends JFrame {
     private JTextField LoginTextField;
     private JPasswordField passwordField;
     private JButton connectButton;
+    private JButton exit;
 
 
     public MainFrameLogin() {
 
         add(JPanelLogin);
-        setTitle("MonkeyBankee");
-        setSize(700, 800);
+        setTitle("MonkeyBankee | Login");
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setUndecorated(true);
+        setIconImage(Toolkit.getDefaultToolkit().getImage("assets/img/monkeybankee.png"));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
 
         connectButton.addActionListener(new ActionListener() {
             @Override
@@ -31,6 +35,7 @@ public class MainFrameLogin extends JFrame {
 
                 Employee employee = new Employee();
                 HashDAO hash = new HashDAO();
+                int idLogin;
 
 
                 String email = LoginTextField.getText();
@@ -40,14 +45,12 @@ public class MainFrameLogin extends JFrame {
                     employee = FactoryDAO.getEmployeeDAO().getByLogin(email);
                     String hashPasswordInput = hash.hashPassword(password);
                     if (hashPasswordInput.equals(employee.getPassword())) {
+                        idLogin = FactoryDAO.getEmployeeDAO().saveId(employee.getEmployee_id());
                         System.out.println(" Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
-                        JOptionPane.showMessageDialog(JPanelLogin, " Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
-
+                        JOptionPane.showMessageDialog(JPanelLogin, " Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom() + " id : " + idLogin);
                         dispose();
-                        MainFrameAddEmployee addEmployee = new MainFrameAddEmployee();
-                        addEmployee.setVisible(true);
-
-
+                        MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
+                        employeePanel.setVisible(true);
                     } else {
                         System.out.println("Mot de passe ou Mail incorrecte");
                         JOptionPane.showMessageDialog(JPanelLogin, "Mot de passe ou Mail incorrecte");
@@ -58,6 +61,22 @@ public class MainFrameLogin extends JFrame {
 
             }
 
+            /*public int idLogin () throws SQLException {
+                Employee employee = new Employee();
+                String email = LoginTextField.getText();
+                employee = FactoryDAO.getEmployeeDAO().getByLogin(email);
+                int id = employee.getEmployee_id();
+                System.out.println(id);
+                return id;
+            }*/
+        });
+
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
         });
     }
 }
