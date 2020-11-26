@@ -46,8 +46,7 @@ public class MainFrameLogin extends JFrame {
                     String hashPasswordInput = hash.hashPassword(password);
                     if (hashPasswordInput.equals(employee.getPassword())) {
                         idLogin = FactoryDAO.getEmployeeDAO().saveId(employee.getEmployee_id());
-                        System.out.println(" Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
-                        JOptionPane.showMessageDialog(JPanelLogin, " Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom() + " id : " + idLogin);
+                        JOptionPane.showMessageDialog(JPanelLogin, " Bonjour " + employee.getEmployee_prenom() + " " + employee.getEmployee_nom());
                         dispose();
                         MainFrameEmployeePanel employeePanel = new MainFrameEmployeePanel();
                         employeePanel.setVisible(true);
@@ -61,14 +60,6 @@ public class MainFrameLogin extends JFrame {
 
             }
 
-            /*public int idLogin () throws SQLException {
-                Employee employee = new Employee();
-                String email = LoginTextField.getText();
-                employee = FactoryDAO.getEmployeeDAO().getByLogin(email);
-                int id = employee.getEmployee_id();
-                System.out.println(id);
-                return id;
-            }*/
         });
 
 
