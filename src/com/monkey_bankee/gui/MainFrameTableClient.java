@@ -23,10 +23,12 @@ public class MainFrameTableClient extends JFrame {
 
     public MainFrameTableClient() {
 
+
         setTitle("MonkeyBankee | clients de la banque");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
 
         this.clients = clients;
         try {
@@ -38,11 +40,17 @@ public class MainFrameTableClient extends JFrame {
 
 
     private void initComponent() throws SQLException {
+        Color vert = new Color(50,181,55);
         this.panel = new JPanel(new BorderLayout());
         clients = FactoryDAO.getClientDAO().getAllClient();
         model = new ClientTable();
         table = new JTable(model);
         table.setOpaque(false);
+        table.getTableHeader().setBackground(vert);
+        table.getTableHeader().setForeground(new Color(0,0,0));
+        table.setBackground(vert);
+        table.setForeground(Color.WHITE);
+        table.setRowHeight(25);
         JScrollPane scrollPane = new JScrollPane(table);
         panel.add(scrollPane, BorderLayout.NORTH);
         this.returnbutton = new JButton("Retour");

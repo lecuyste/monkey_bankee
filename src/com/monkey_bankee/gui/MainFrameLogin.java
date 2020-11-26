@@ -5,6 +5,7 @@ import com.monkey_bankee.dao.HashDAO;
 import com.monkey_bankee.model.Employee;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -23,7 +24,10 @@ public class MainFrameLogin extends JFrame {
         setTitle("MonkeyBankee | Login");
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
+        setIconImage(Toolkit.getDefaultToolkit().getImage("assets/img/monkeybankee.png"));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
 
         connectButton.addActionListener(new ActionListener() {
             @Override
